@@ -7,9 +7,9 @@ def test_catalog_management():
     catalog = EBookCatalog()
 
     # Add e-books to catalog
-    ebook1 = EBook("Python 101", "John Doe", "2022", "Programming", 20.00)
-    ebook2 = EBook("AI Essentials", "Jane Smith", "2023", "AI", 35.00)
-    ebook3 = EBook("Data Science Basics", "Alice Brown", "2021", "Data Science", 50.00)
+    ebook1 = EBook("The Giving Tree", "Shel Silverstein", "1964", "Children's Literature", 10.00)
+    ebook2 = EBook("The Hunger Games", "Suzanne Collins", "2008", "Adult Dystopian Fiction", 12.00)
+    ebook3 = EBook("The Great Gatsby", "F. Scott Fitzgerald", "1925", "Classic Fiction", 10.00)
 
     # Adding books to the catalog
     catalog.add_ebook(ebook1)
@@ -34,16 +34,16 @@ def test_customer_cart_operations():
     print("Testing Customer and Shopping Cart Operations")
 
     # Create customers with different loyalty statuses
-    customer1 = Customer("Alice", "alice@example.com", is_loyalty_member=True)
-    customer2 = Customer("Bob", "bob@example.com", is_loyalty_member=False)
+    customer1 = Customer("Mohamed", "mohamed@example.com", is_loyalty_member=True)
+    customer2 = Customer("Ahmed", "ahmed@example.com", is_loyalty_member=False)
 
     # Get carts for customers
     cart1 = customer1.get_cart()
     cart2 = customer2.get_cart()
 
     # Add items to customer1's cart with valid and invalid quantities
-    ebook1 = EBook("Python 101", "John Doe", "2022", "Programming", 20.00)
-    ebook2 = EBook("Data Science Basics", "Alice Brown", "2021", "Data Science", 50.00)
+    ebook1 = EBook("The Giving Tree", "Shel Silverstein", "1964", "Children's Literature", 10.00)
+    ebook2 = EBook("The Hunger Games", "Suzanne Collins", "2008", "Adult Dystopian Fiction", 12.00)
     cart1.add_to_cart(ebook1, 3)  # Adding 3 copies of Python 101
     cart1.add_to_cart(ebook2, 1)  # Adding 1 copy of Data Science Basics
 
@@ -80,13 +80,13 @@ def test_order_processing():
     print("Testing Order Processing and Discounts")
 
     # Set up customer with loyalty membership and shopping cart
-    customer = Customer("Alice", "alice@example.com", is_loyalty_member=True)
+    customer = Customer("Mohamed", "mohamed@example.com", is_loyalty_member=True)
     cart = customer.get_cart()
 
     # Add items to cart to test bulk discount
-    ebook1 = EBook("Python 101", "John Doe", "2022", "Programming", 20.00)
-    ebook2 = EBook("AI Essentials", "Jane Smith", "2023", "AI", 35.00)
-    ebook3 = EBook("Data Science Basics", "Alice Brown", "2021", "Data Science", 50.00)
+    ebook1 = EBook("The Giving Tree", "Shel Silverstein", "1964", "Children's Literature", 10.00)
+    ebook2 = EBook("The Hunger Games", "Suzanne Collins", "2008", "Adult Dystopian Fiction", 12.00)
+    ebook3 = EBook("The Great Gatsby", "F. Scott Fitzgerald", "1925", "Classic Fiction", 10.00)
 
     cart.add_to_cart(ebook1, 5)  # Adding 5 copies to qualify for bulk discount
     cart.add_to_cart(ebook2, 1)  # Additional item to check total calculation
@@ -100,7 +100,7 @@ def test_order_processing():
     print("Order Processing and Discounts Test Passed\n")
 
     # Edge case: Empty cart order
-    customer = Customer("Jane", "jane@example.com", is_loyalty_member=True)
+    customer = Customer("Hamed", "hamed@example.com", is_loyalty_member=True)
     empty_cart = customer.get_cart()
     try:
         empty_order = Order(customer, empty_cart)
@@ -113,12 +113,12 @@ def test_invoice_generation():
     print("Testing Invoice Generation with VAT Calculation")
 
     # Set up customer and create cart
-    customer = Customer("Alice", "alice@example.com", is_loyalty_member=True)
+    customer = Customer("Mohamed", "mohamed@example.com", is_loyalty_member=True)
     cart = customer.get_cart()
 
     # Add items to cart
-    ebook1 = EBook("Python 101", "John Doe", "2022", "Programming", 20.00)
-    ebook2 = EBook("Data Science Basics", "Alice Brown", "2021", "Data Science", 50.00)
+    ebook1 = EBook("The Giving Tree", "Shel Silverstein", "1964", "Children's Literature", 10.00)
+    ebook2 = EBook("The Hunger Games", "Suzanne Collins", "2008", "Adult Dystopian Fiction", 12.00)
     cart.add_to_cart(ebook1, 2)  # Adding 2 copies of Python 101
     cart.add_to_cart(ebook2, 3)  # Adding 3 copies of Data Science Basics
 
